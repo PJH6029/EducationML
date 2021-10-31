@@ -6,6 +6,8 @@ import pickle
 from dataset.mnist import load_mnist
 from common.functions import sigmoid, softmax
 import cv2
+from PIL import Image
+
 
 
 def get_data():
@@ -45,14 +47,19 @@ for i in range(len(x)):
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
 
 pic = cv2.imread("seven.png")
-pic = cv2.cvtColor(pic, cv2.COLOR_RGB2GRAY)
 pic = cv2.resize(pic, (28, 28), interpolation=cv2.INTER_AREA)
-pic = np.array(pic)
-pic = pic.flatten()
-y = predict(network, pic)
-print(y.shape)
-p = np.argmax(y)
-print(p)
+img2 = Image.fromarray(pic)
+img2.show()
 
-y = predict(network, x[0])
-print(np.argmax(y), t[0])
+pic = cv2.cvtColor(pic, cv2.COLOR_RGB2GRAY)
+pic = np.array(pic)
+img = Image.fromarray(np.uint8(pic))
+img.show()
+# pic = pic.flatten()
+# y = predict(network, pic)
+# print(y.shape)
+# p = np.argmax(y)
+# print(p)
+#
+# y = predict(network, x[0])
+# print(np.argmax(y), t[0])

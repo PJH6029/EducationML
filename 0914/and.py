@@ -13,6 +13,7 @@ def AND2(x1, x2):
     X = np.array([x1, x2])
     b = -1.5
     y = sum(X * W) + b
+    y = np.dot(X, W) + b
     if y <= 0:
         return 0
     else:
